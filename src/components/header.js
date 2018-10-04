@@ -2,7 +2,9 @@ import React from 'react'
 import Link from 'gatsby-link'
 const Header = ({ siteTitle }) => (
   <div id="header">
-    <span className="logo icon fa-paper-plane-o" />
+    <Link to="/">
+      <span className="logo icon fa-paper-plane-o" alt="home_button" />
+    </Link>
     <h1>Hi. Welcome to Flow</h1>
     <p>
       We are Mixed-Martial Arts Studio that specialized in Brizilian Jiu Jitsu.

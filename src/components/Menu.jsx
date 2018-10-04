@@ -1,5 +1,6 @@
 import React from 'react'
 import { bubble as Menu } from 'react-burger-menu'
+import Link from 'gatsby-link'
 
 class MenuSelection extends React.Component {
   constructor(props) {
@@ -11,16 +12,16 @@ class MenuSelection extends React.Component {
   render() {
     return (
       <Menu {...this.props}>
-        <a id="home" className="menu-item" href="/">
+        <Link id="home" className="menu-item" to="/">
           Home
-        </a>
-        <a id="about" className="menu-item" href="/about">
+        </Link>
+        <Link id="about" className="menu-item" to="/about">
           About
-        </a>
-        <a id="contact" className="menu-item" href="/contact">
+        </Link>
+        <Link id="contact" className="menu-item" to="/contact">
           Contact
-        </a>
-        <a onClick={this.showSettings} className="menu-item--small" href="">
+        </Link>
+        <a onClick={this.showSettings} className="menu-item--small" to="#">
           Settings
         </a>
       </Menu>
