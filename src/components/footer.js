@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'gatsby-link'
+// import Link from 'gatsby-link'
 
 const Footer = () => (
   <div id="footer">
@@ -13,7 +13,7 @@ const Footer = () => (
         tempor orci penatibus. Tellus erat mauris ipsum fermentum etiam vivamus.
       </p>
 
-      <form method="post" action="#">
+      <form method="post" action="/">
         <div className="row">
           <div className="col-6 col-12-mobilep">
             <input type="text" name="name" placeholder="Name" />
@@ -36,27 +36,27 @@ const Footer = () => (
 
       <ul className="icons">
         <li>
-          <a href="#" className="icon fa-twitter">
+          <a href="/" className="icon fa-twitter">
             <span className="label">Twitter</span>
           </a>
         </li>
         <li>
-          <a href="#" className="icon fa-facebook">
+          <a href="/" className="icon fa-facebook">
             <span className="label">Facebook</span>
           </a>
         </li>
         <li>
-          <a href="#" className="icon fa-instagram">
+          <a href="/" className="icon fa-instagram">
             <span className="label">Instagram</span>
           </a>
         </li>
         <li>
-          <a href="#" className="icon fa-github">
+          <a href="/" className="icon fa-github">
             <span className="label">Github</span>
           </a>
         </li>
         <li>
-          <a href="#" className="icon fa-dribbble">
+          <a href="/" className="icon fa-dribbble">
             <span className="label">Dribbble</span>
           </a>
         </li>

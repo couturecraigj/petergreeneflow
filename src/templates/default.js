@@ -1,69 +1,68 @@
 import React from 'react'
-// import Link from 'gatsby-link'
 import { graphql } from 'gatsby'
-import Layout from '../layouts'
+import Link from 'gatsby-link'
+
 import pic1 from '../assets/images/pic01.jpg'
 import pic2 from '../assets/images/pic02.jpg'
 import pic3 from '../assets/images/pic03.jpg'
 
-const IndexPage = ({ data }) => (
-  <Layout data={data}>
-    <div id="main">
-      <header className="major container medium">
-        <h2>
-          We conduct experiments that
-          <br />
-          may or may not seriously
-          <br />
-          break the universe
-        </h2>
-        {/* <p>Tellus erat mauris ipsum fermentum<br />
+const DefaultTemplate = () => (
+  <div id="main">
+    <header className="major container medium">
+      <h2>
+        <a href="#">We conduct experiments that</a>
+        <br />
+        <a href="#">may or may not seriously</a>
+        <br />
+        <a href="#">break the universe</a>
+      </h2>
+      {/* <p>Tellus erat mauris ipsum fermentum<br />
       etiam vivamus nunc nibh morbi.</p> */}
-      </header>
+    </header>
 
-      <div className="box alt container">
-        <section className="feature left">
-          <a href="/" className="image icon fa-signal">
-            <img src={pic1} alt="" />
-          </a>
-          <div className="content">
-            <h3>The First Thing</h3>
-            <p>
-              Vitae natoque dictum etiam semper magnis enim feugiat amet
-              curabitur tempor orci penatibus. Tellus erat mauris ipsum
-              fermentum etiam vivamus eget. Nunc nibh morbi quis fusce lacus.
-            </p>
-          </div>
-        </section>
-        <section className="feature right">
-          <a href="/" className="image icon fa-code">
-            <img src={pic2} alt="" />
-          </a>
-          <div className="content">
-            <h3>The Second Thing</h3>
-            <p>
-              Vitae natoque dictum etiam semper magnis enim feugiat amet
-              curabitur tempor orci penatibus. Tellus erat mauris ipsum
-              fermentum etiam vivamus eget. Nunc nibh morbi quis fusce lacus.
-            </p>
-          </div>
-        </section>
-        <section className="feature left">
-          <a href="/" className="image icon fa-mobile">
-            <img src={pic3} alt="" />
-          </a>
-          <div className="content">
-            <h3>The Third Thing</h3>
-            <p>
-              Vitae natoque dictum etiam semper magnis enim feugiat amet
-              curabitur tempor orci penatibus. Tellus erat mauris ipsum
-              fermentum etiam vivamus eget. Nunc nibh morbi quis fusce lacus.
-            </p>
-          </div>
-        </section>
-      </div>
+    <div className="box alt container">
+      <section className="feature left">
+        <a href="#" className="image icon fa-signal">
+          <img src={pic1} alt="" />
+        </a>
+        <div className="content">
+          <h3>The First Thing</h3>
+          <p>
+            Vitae natoque dictum etiam semper magnis enim feugiat amet curabitur
+            tempor orci penatibus. Tellus erat mauris ipsum fermentum etiam
+            vivamus eget. Nunc nibh morbi quis fusce lacus.
+          </p>
+        </div>
+      </section>
+      <section className="feature right">
+        <a href="#" className="image icon fa-code">
+          <img src={pic2} alt="" />
+        </a>
+        <div className="content">
+          <h3>The Second Thing</h3>
+          <p>
+            Vitae natoque dictum etiam semper magnis enim feugiat amet curabitur
+            tempor orci penatibus. Tellus erat mauris ipsum fermentum etiam
+            vivamus eget. Nunc nibh morbi quis fusce lacus.
+          </p>
+        </div>
+      </section>
+      <section className="feature left">
+        <a href="#" className="image icon fa-mobile">
+          <img src={pic3} alt="" />
+        </a>
+        <div className="content">
+          <h3>The Third Thing</h3>
+          <p>
+            Vitae natoque dictum etiam semper magnis enim feugiat amet curabitur
+            tempor orci penatibus. Tellus erat mauris ipsum fermentum etiam
+            vivamus eget. Nunc nibh morbi quis fusce lacus.
+          </p>
+        </div>
+      </section>
+    </div>
 
-      {/* <div className="box container">
+    {/* <div className="box container">
       <header>
         <h2>A lot of generic stuff</h2>
       </header>
@@ -204,33 +203,21 @@ const IndexPage = ({ data }) => (
       </section>
     </div> */}
 
-      <footer className="major container medium">
-        <h3>Get shady with science</h3>
-        <p>
-          Vitae natoque dictum etiam semper magnis enim feugiat amet curabitur
-          tempor orci penatibus. Tellus erat mauris ipsum fermentum etiam
-          vivamus.
-        </p>
-        <ul className="actions special">
-          <li>
-            <a href="/" className="button">
-              Join our crew
-            </a>
-          </li>
-        </ul>
-      </footer>
-    </div>
-  </Layout>
+    <footer className="major container medium">
+      <h3>Get shady with science</h3>
+      <p>
+        Vitae natoque dictum etiam semper magnis enim feugiat amet curabitur
+        tempor orci penatibus. Tellus erat mauris ipsum fermentum etiam vivamus.
+      </p>
+      <ul className="actions special">
+        <li>
+          <a href="#" className="button">
+            Join our crew
+          </a>
+        </li>
+      </ul>
+    </footer>
+  </div>
 )
 
-export default IndexPage
-
-export const query = graphql`
-  query IndexQuery {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`
+export default DefaultTemplate

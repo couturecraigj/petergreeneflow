@@ -3,9 +3,6 @@ import { bubble as Menu } from 'react-burger-menu'
 import Link from 'gatsby-link'
 
 class MenuSelection extends React.Component {
-  constructor(props) {
-    super(props)
-  }
   showSettings(event) {
     event.preventDefault()
   }
@@ -21,7 +18,11 @@ class MenuSelection extends React.Component {
         <Link id="contact" className="menu-item" to="/contact">
           Contact
         </Link>
-        <a onClick={this.showSettings} className="menu-item--small" to="#">
+        <a
+          onClick={this.showSettings}
+          className="menu-item--small"
+          href="/settings"
+        >
           Settings
         </a>
       </Menu>
