@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import Header from '../components/header'
 import Footer from '../components/footer'
-// import Menu from '../components/Menu'
+import Menu from '../components/Menu'
 import '../sass/main.scss'
 
 class Layout extends React.Component {
@@ -15,11 +15,7 @@ class Layout extends React.Component {
 
     return (
       <div id="outer-container">
-        {/* <Menu
-          pageWrapId="page-wrap"
-          isOpen
-          outerContainerId="outer-container"
-        /> */}
+        <Menu pageWrapId="page-wrap" outerContainerId="outer-container" />
         <Helmet
           title={data.site.siteMetadata.title}
           meta={[
