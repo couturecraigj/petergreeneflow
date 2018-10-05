@@ -142,7 +142,7 @@ exports.createPages = ({ graphql, actions }) => {
         _.each(
           _.get(result, 'data.allWordpressPage.edges', []),
           (edge, index) => {
-            console.log(edge.node)
+            // console.log(edge.node)
             createPage({
               path: edge.node.slug,
               mainImg: _.get(edge, 'node.featured_media.localFile'),
@@ -210,6 +210,7 @@ exports.createPages = ({ graphql, actions }) => {
         _.each(
           _.get(result, 'data.allWordpressPost.edges', []),
           (edge, index) => {
+            console.log(edge)
             // console.log(edge)
             createPage({
               path: `/${edge.node.date}/${edge.node.slug}`,
