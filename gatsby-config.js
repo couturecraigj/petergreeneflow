@@ -53,7 +53,7 @@ module.exports = {
         // Search and Replace Urls across WordPress content.
         searchAndReplaceContentUrls: {
           sourceUrl: wordPressOriginLong,
-          replacementUrl: devMode ? 'http://localhost:8000/' : siteUrl + '/',
+          replacementUrl: devMode ? 'http://localhost:8000' : siteUrl,
         },
         // Set how many simultaneous requests are sent at once.
         concurrentRequests: 10,
@@ -66,6 +66,13 @@ module.exports = {
         normalizer: function({ entities }) {
           return entities
         },
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/assets/images`,
       },
     },
     `gatsby-plugin-sharp`,

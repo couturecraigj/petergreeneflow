@@ -15,34 +15,25 @@
 
 // Breakpoints.
 
-@include breakpoints(
-  (
-    wide: (
-      1281px,
-      1680px,
-    ),
-    normal: (
-      981px,
-      1280px,
-    ),
-    narrow: (
-      841px,
-      980px,
-    ),
-    narrower: (
-      737px,
-      840px,
-    ),
-    mobile: (
-      481px,
-      736px,
-    ),
-    mobilep: (
-      null,
-      480px,
-    ),
-  )
-);
+@include breakpoints((wide: (1281px,
+1680px,
+),
+normal: (981px,
+1280px,
+),
+narrow: (841px,
+980px,
+),
+narrower: (737px,
+840px,
+),
+mobile: (481px,
+736px,
+),
+mobilep: (null,
+480px,
+),
+));
 
 // Reset.
 // Based on meyerweb.com/eric/tools/css/reset (v2.0 | 20110126 | License: public domain)
@@ -222,6 +213,7 @@ body {
 
   // Stops initial animations until page loads.
   &.is-preload {
+
     *,
     *:before,
     *:after {
@@ -243,10 +235,8 @@ textarea {
 }
 
 a {
-  @include vendor(
-    'transition',
-    ('color 0.2s ease-in-out', 'border-bottom-color 0.2s ease-in-out')
-  );
+  @include vendor('transition',
+  ('color 0.2s ease-in-out', 'border-bottom-color 0.2s ease-in-out'));
   border-bottom: dotted 1px;
   color: _palette(accent1, bg);
   text-decoration: none;
@@ -556,8 +546,7 @@ select {
 }
 
 select {
-  background-image: svg-url(
-    "<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' preserveAspectRatio='none' viewBox='0 0 40 40'><path d='M9.4,12.3l10.4,10.4l10.4-10.4c0.2-0.2,0.5-0.4,0.9-0.4c0.3,0,0.6,0.1,0.9,0.4l3.3,3.3c0.2,0.2,0.4,0.5,0.4,0.9 c0,0.4-0.1,0.6-0.4,0.9L20.7,31.9c-0.2,0.2-0.5,0.4-0.9,0.4c-0.3,0-0.6-0.1-0.9-0.4L4.3,17.3c-0.2-0.2-0.4-0.5-0.4-0.9 c0-0.4,0.1-0.6,0.4-0.9l3.3-3.3c0.2-0.2,0.5-0.4,0.9-0.4S9.1,12.1,9.4,12.3z' fill='#{_palette(border)}' /></svg>"
+  background-image: svg-url("<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' preserveAspectRatio='none' viewBox='0 0 40 40'><path d='M9.4,12.3l10.4,10.4l10.4-10.4c0.2-0.2,0.5-0.4,0.9-0.4c0.3,0,0.6,0.1,0.9,0.4l3.3,3.3c0.2,0.2,0.4,0.5,0.4,0.9 c0,0.4-0.1,0.6-0.4,0.9L20.7,31.9c-0.2,0.2-0.5,0.4-0.9,0.4c-0.3,0-0.6-0.1-0.9-0.4L4.3,17.3c-0.2-0.2-0.4-0.5-0.4-0.9 c0-0.4,0.1-0.6,0.4-0.9l3.3-3.3c0.2-0.2,0.5-0.4,0.9-0.4S9.1,12.1,9.4,12.3z' fill='#{_palette(border)}' /></svg>"
   );
   background-size: 1.25em;
   background-repeat: no-repeat;
@@ -654,10 +643,8 @@ textarea {
     @include vendor('perspective', '500px');
 
     &:before {
-      @include vendor(
-        'transition',
-        ('transform 0.1s ease-in-out', 'font-size 0.1s ease-in-out')
-      );
+      @include vendor('transition',
+      ('transform 0.1s ease-in-out', 'font-size 0.1s ease-in-out'));
       color: #fff;
       font-size: 6em;
       height: 1em;
@@ -694,7 +681,7 @@ span.image.icon {
   border-bottom: none;
   position: relative;
 
-  > .label {
+  >.label {
     display: none;
   }
 }
@@ -770,7 +757,7 @@ ul.actions {
       @include vendor('flex-shrink', '1');
       width: 100%;
 
-      > * {
+      >* {
         width: 100%;
       }
     }
@@ -797,7 +784,7 @@ ul.actions {
         text-align: center;
         width: 100%;
 
-        > * {
+        >* {
           width: 100%;
         }
 
@@ -907,10 +894,8 @@ input[type='reset'],
 input[type='button'],
 .button {
   @include vendor('appearance', 'none');
-  @include vendor(
-    'transition',
-    ('color 0.2s ease-in-out', 'background-color 0.2s ease-in-out')
-  );
+  @include vendor('transition',
+  ('color 0.2s ease-in-out', 'background-color 0.2s ease-in-out'));
   background: _palette(accent2, bg);
   border-radius: _size(border-radius);
   border: 0;
@@ -1741,4 +1726,33 @@ input[type='button'],
   margin: 0 2px;
   box-sizing: border-box;
   border-radius: 3px;
+}
+
+.feature {
+  overflow: hidden;
+}
+
+div {
+  &.major {
+    background: #ffffff;
+
+    &:before,
+    &:after {
+      background: rgba(224, 224, 224, 0.75);
+      content: '';
+      display: block;
+      height: 1px;
+      left: 0;
+      position: absolute;
+      width: 100%;
+    }
+
+    &:before {
+      top: 10px;
+    }
+
+    &:after {
+      bottom: 10px;
+    }
+  }
 }
