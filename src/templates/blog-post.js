@@ -2,15 +2,11 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import Layout from '../layouts'
 import { graphql } from 'gatsby'
-import Link from 'gatsby-link'
 import Img from 'gatsby-image'
 import { get, has } from 'lodash'
-import pic1 from '../assets/images/pic01.jpg'
 class BlogPostTemplate extends React.Component {
   render() {
-    console.log(this.props.data)
     const post = this.props.data.wordpressPost
-    const siteTitle = get(this.props, 'data.site.siteMetadata.title')
     const siteDescription = get(
       this.props,
       'data.site.siteMetadata.description'
@@ -19,6 +15,9 @@ class BlogPostTemplate extends React.Component {
     return (
       <Layout>
         <div id="main">
+          <Helmet>
+            <title>{post.title}</title>
+          </Helmet>
           {siteDescription && (
             <header className="major container medium">
               <h2>{siteDescription}</h2>

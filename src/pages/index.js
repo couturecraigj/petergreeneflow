@@ -6,11 +6,10 @@ import Img from 'gatsby-image'
 import Layout from '../layouts'
 import Link from 'gatsby-link'
 import pic1 from '../assets/images/pic01.jpg'
-import pic2 from '../assets/images/pic02.jpg'
-import pic3 from '../assets/images/pic03.jpg'
 
 const IndexPage = ({ data }) => {
   const siteDescription = data.allWordpressWpSettings.edges[0].node.description
+  const content = data.wordpressPage.content
   return (
     <Layout data={data}>
       <div id="main">
@@ -35,7 +34,7 @@ const IndexPage = ({ data }) => {
                     alt=""
                   />
                 ) : (
-                  <img src={pic1} />
+                  <img src={pic1} alt={node.slug} />
                 )}
               </Link>
               <div className="content">
@@ -45,6 +44,10 @@ const IndexPage = ({ data }) => {
             </section>
           ))}
         </div>
+        <div
+          dangerouslySetInnerHTML={{ __html: content }}
+          className="major container medium"
+        />
         <footer className="major container medium">
           <h3>Get shady with science</h3>
           <p>
@@ -73,6 +76,9 @@ export const query = graphql`
       siteMetadata {
         title
       }
+    }
+    wordpressPage(slug: { eq: "home" }) {
+      content
     }
     allWordpressWpSettings {
       edges {

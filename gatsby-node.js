@@ -48,9 +48,9 @@ exports.createPages = ({ graphql, actions }) => {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
-        allWordpressPage ${
-          devMode ? '' : `(filter: { status: { eq: "publish" } })`
-        } {
+        allWordpressPage (filter: {slug: {ne: "home"}${
+          devMode ? '' : `, status: { eq: "publish" }`
+        }}) {
           edges {
             node {
               # path: date(formatString: "/YYYY/MM/DD/")
@@ -128,9 +128,11 @@ exports.createPages = ({ graphql, actions }) => {
     `
 
   return new Promise((resolve, reject) => {
-    const postTemplate = path.resolve('./src/pages/blog-post.js')
-    const blogPageList = path.resolve('./src/pages/blog-list.js')
-    const landingByPathTemplate = path.resolve('./src/pages/landing-by-path.js')
+    const postTemplate = path.resolve('./src/templates/blog-post.js')
+    const blogPageList = path.resolve('./src/templates/blog-list.js')
+    const landingByPathTemplate = path.resolve(
+      './src/templates/landing-by-path.js'
+    )
     resolve(
       graphql(query).then(result => {
         if (result.errors) {
@@ -142,7 +144,6 @@ exports.createPages = ({ graphql, actions }) => {
         _.each(
           _.get(result, 'data.allWordpressPage.edges', []),
           (edge, index) => {
-            // console.log(edge.node)
             createPage({
               path: edge.node.slug,
               mainImg: _.get(edge, 'node.featured_media.localFile'),
@@ -161,7 +162,6 @@ exports.createPages = ({ graphql, actions }) => {
             component: blogPageList,
           })
         } else {
-          // console.log(_.get(result, 'data.defaultSharp'))
           createPaginatedPages({
             edges: _.get(result, 'data.allWordpressPost.edges', []).map(
               edge =>
@@ -210,8 +210,6 @@ exports.createPages = ({ graphql, actions }) => {
         _.each(
           _.get(result, 'data.allWordpressPost.edges', []),
           (edge, index) => {
-            console.log(edge)
-            // console.log(edge)
             createPage({
               path: `/${edge.node.date}/${edge.node.slug}`,
               mainImg: _.get(edge, 'node.featured_media.localFile'),

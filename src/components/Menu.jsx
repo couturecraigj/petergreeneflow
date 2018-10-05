@@ -29,7 +29,7 @@ class MenuSelection extends React.Component {
                 id={node.slug}
                 key={node.slug}
                 className="menu-item"
-                to={node.slug}
+                to={node.slug === 'home' ? '/' : node.slug}
               >
                 {node.title}
               </Link>

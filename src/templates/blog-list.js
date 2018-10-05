@@ -4,15 +4,15 @@ import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 import Img from 'gatsby-image'
 import pic1 from '../assets/images/pic01.jpg'
-import BlogList from '../components/BlogList'
+// import BlogList from '../components/BlogList'
 import Layout from '../layouts'
 
 const Pagination = ({ index, pageCount, group }) => {
   if (index === 1 && index === pageCount) return null
   const before = index !== 1
   const prevUrl = index - 1 === 1 ? `/blog` : `/blog/${index - 1}`
-  const after = index !== pageCount
   const nextUrl = index === pageCount ? '#' : `/blog/${index + 1}`
+  const after = index !== pageCount
   return (
     <section className="special">
       <ul className="pagination">
@@ -68,14 +68,9 @@ const Pagination = ({ index, pageCount, group }) => {
 
 const BlogListTemplate = props => {
   const { data, pathContext } = props
-  const { group = [], index = 1, first, last, pageCount = 1 } = pathContext
-  const previousUrl = index - 1 == 1 ? '' : (index - 1).toString()
-  const nextUrl = (index + 1).toString()
-  console.log(group)
-  const closingComponent = () => (
-    <Pagination index={index} pageCount={pageCount} group={group} />
-  )
-  console.log(group)
+  const { group = [], index = 1, pageCount = 1 } = pathContext
+  // const previousUrl = index - 1 == 1 ? '' : (index - 1).toString()
+  // const nextUrl = (index + 1).toString()
   return (
     <Layout data={data}>
       <div id="main">
@@ -106,7 +101,7 @@ const BlogListTemplate = props => {
                       alt=""
                     />
                   ) : (
-                    <img src={pic1} />
+                    <img src={pic1} alt={node.title} />
                   )}
                 </Link>
                 <div className="content">
@@ -116,6 +111,7 @@ const BlogListTemplate = props => {
               </section>
             )
           })}
+          <Pagination index={index} pageCount={pageCount} group={group} />
         </div>
       </div>
     </Layout>

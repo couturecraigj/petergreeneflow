@@ -1,21 +1,13 @@
 import React from 'react'
 import Link from 'gatsby-link'
-import get from 'lodash/get'
 // import Link from 'gatsby-link'
 import { graphql } from 'gatsby'
 import Layout from '../layouts'
-import pic1 from '../assets/images/pic01.jpg'
-import pic2 from '../assets/images/pic02.jpg'
-import pic3 from '../assets/images/pic03.jpg'
 
 class BlogPostTemplate extends React.Component {
   render() {
     const { data } = this.props
     const post = data.wordpressPage
-    // console.log(data)
-    // const post = data.wordpressPage
-    // const siteTitle = get(data, 'site.siteMetadata.title')
-    // const siteDescription = get(data, 'site.siteMetadata.description')
     return (
       <Layout>
         <div id="main">
