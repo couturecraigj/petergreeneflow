@@ -1,29 +1,45 @@
 import React from 'react'
 import Helmet from 'react-helmet'
+import Layout from '../layouts'
 import Link from 'gatsby-link'
 import Img from 'gatsby-image'
-import get from 'lodash/get'
+import { get, has } from 'lodash'
+import pic1 from '../assets/images/pic01.jpg'
 class BlogPostTemplate extends React.Component {
   render() {
+    console.log(this.props.data)
     const post = this.props.data.wordpressPost
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
+    const siteDescription = get(
+      this.props,
+      'data.site.siteMetadata.description'
+    )
 
     return (
-      <div>
+      <Layout>
         <div id="main">
-          <Helmet title={`${post.title} | ${siteTitle}`} />
-          <h1 dangerouslySetInnerHTML={{ __html: post.title }} />
-          <p>{post.date}</p>
-          <Img
-            sizes={get(post, 'featured_media.localFile.childImageSharp.sizes')}
-          />
-          <br />
-          <div
-            className="blog-post-content"
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          />
+          {siteDescription && (
+            <header className="major container medium">
+              <h2>{siteDescription}</h2>
+            </header>
+          )}
+          <div className="box alt container">
+            {has(post, 'featured_media.localFile.childImageSharp.fluid') && (
+              <Img
+                fluid={get(
+                  post,
+                  'featured_media.localFile.childImageSharp.fluid'
+                )}
+              />
+            )}
+            <br />
+            <div
+              className="blog-post-content"
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
+          </div>
         </div>
-      </div>
+      </Layout>
     )
   }
 }
@@ -36,6 +52,7 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         author
+        description
       }
     }
     wordpressPost(slug: { eq: $slug }) {
